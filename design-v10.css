@@ -1,0 +1,235 @@
+/* DeLima House · Edition 10 | Signature Cards and Unified Mobile Interactions */
+:root{--v10-edge:rgba(213,173,124,.17);--v10-glow:rgba(213,173,124,.095);--v10-ease:cubic-bezier(.2,.78,.25,1)}
+/* Sticky shell instead of sticky inner header: the V9 parent was only header-tall,
+   which made the sticky rule stop working immediately after scrolling. */
+#siteHeader{position:sticky;top:0;z-index:130;isolation:isolate;overflow:visible;background:#080808;transition:box-shadow .3s ease}
+#siteHeader .header{position:relative;top:auto;z-index:1;background:#080808}
+#siteHeader.is-scrolled{box-shadow:0 14px 40px rgba(0,0,0,.42)}
+#siteHeader.is-scrolled .header{border-bottom-color:rgba(213,173,124,.20)}
+/* A completely transparent touch flash; use gold only for keyboard focus. */
+html,body,body *{-webkit-tap-highlight-color:transparent}
+body,body main,body #siteFooter{-webkit-touch-callout:none}
+body img{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none}
+body main,body #siteFooter,body .header,body .mobile-panel{-webkit-user-select:none;user-select:none}
+body input,body textarea,body select,body [contenteditable="true"]{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+::selection{background:rgba(213,173,124,.45);color:#fff}
+:where(a,button,input,textarea,select):focus-visible{outline:2px solid #D5AD7C;outline-offset:4px}
+/* Shared card language: quiet luminous border, refined radius, warm internal lighting. */
+.feature,.category-card,.product-card,.info-card,.editorial-card,.menu-empty,.notice,.location-banner,.long-text,.cta-panel{backface-visibility:hidden}
+.features{gap:13px;padding-block:24px;border-top:0;border-bottom-color:rgba(213,173,124,.12)}
+.feature,.feature+.feature{position:relative;padding:24px 23px 27px;border:1px solid var(--v10-edge)!important;border-radius:15px;background:linear-gradient(146deg,rgba(213,173,124,.065),rgba(213,173,124,.009) 55%),#11100e;overflow:hidden;min-height:137px;transition:transform .42s var(--v10-ease),border-color .35s,box-shadow .35s}
+.feature:before{content:'';position:absolute;inset:0 auto auto 24px;width:72px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.85}
+.feature>.icon{color:var(--gold);width:23px;height:23px}
+.feature h3{font-size:13px;color:#F4EADF;margin-bottom:8px}
+.feature p{color:#ABA29A;font-size:12px;max-width:31ch}
+.feature:hover{transform:translateY(-4px);border-color:rgba(213,173,124,.4)!important;box-shadow:0 22px 60px rgba(0,0,0,.28)}
+.category-grid{gap:clamp(13px,1.6vw,21px)}
+.category-card{isolation:isolate;border:1px solid rgba(213,173,124,.15);border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.22);background:#151210;transition:transform .5s var(--v10-ease),border-color .35s,box-shadow .5s var(--v10-ease)}
+.category-card:before{content:'';pointer-events:none;position:absolute;inset:0;border:1px solid rgba(255,255,255,.03);border-radius:inherit;z-index:3}
+.category-card picture{aspect-ratio:4/4.8}
+.category-card .shade{background:linear-gradient(180deg,transparent 23%,rgba(8,7,6,.22) 46%,rgba(7,6,6,.95) 100%)}
+.category-card .content{padding:clamp(19px,2.3vw,31px);bottom:0;z-index:2}
+.category-card h3{font-size:clamp(20px,2.1vw,28px);margin:0 0 10px;color:#F8F0E5;gap:18px}
+.category-card h3 .icon{color:var(--gold);padding:2px;width:25px!important;height:25px!important;min-width:25px;flex:0 0 25px;border:1px solid rgba(213,173,124,.36);border-radius:50%;transition:transform .3s var(--v10-ease),background .3s}
+.category-card:hover h3 .icon{transform:translateX(3px);background:rgba(213,173,124,.12)}
+.category-card p{font-size:12px;line-height:1.7;color:#C3B7A9;max-width:32ch}
+.category-card:hover{transform:translateY(-7px);border-color:rgba(213,173,124,.5);box-shadow:0 30px 78px rgba(0,0,0,.43)}
+.category-card img{filter:saturate(.78) contrast(1.05)}
+.category-card:hover img{filter:saturate(.95) contrast(1.05);transform:scale(1.07)}
+/* Inner pages: every informational card has coherent geometry + spacing. */
+.info-grid,.editorial-cards{gap:clamp(16px,2vw,25px)}
+.info-card,.editorial-card,.long-text,.menu-empty,.notice{background:radial-gradient(ellipse at 0% 0%,rgba(213,173,124,.06),transparent 65%),#11100f;border:1px solid var(--v10-edge);border-radius:18px;box-shadow:0 16px 45px rgba(0,0,0,.16)}
+.info-card,.long-text{padding:clamp(24px,3vw,38px)}
+.info-card{position:relative;overflow:hidden;transition:border-color .3s,transform .4s var(--v10-ease),box-shadow .4s}
+.info-card:not(.photo-only):before{content:'';position:absolute;left:clamp(24px,3vw,38px);right:clamp(24px,3vw,38px);top:0;height:1px;background:linear-gradient(90deg,var(--gold),transparent 58%)}
+.info-card h2{font-size:clamp(25px,2.8vw,36px);letter-spacing:-.025em;margin:13px 0 25px;line-height:1.2}
+.info-card p{font-size:14px;color:#B9AFA4;line-height:1.75}
+.info-card .info-row{font-size:13px;gap:13px;margin-block:13px;color:#E6DCD0}
+.info-card:hover{border-color:rgba(213,173,124,.36);box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.info-card.photo-only{padding:0;overflow:hidden}
+.info-card.photo-only:before{display:none}
+.info-card.photo-only img{transition:transform .7s var(--v10-ease);filter:saturate(.86)}
+.info-card.photo-only:hover img{transform:scale(1.04)}
+.editorial-card{overflow:hidden;position:relative;transition:transform .4s var(--v10-ease),border-color .3s,box-shadow .3s}
+.editorial-card:hover{transform:translateY(-5px);border-color:rgba(213,173,124,.38);box-shadow:0 27px 66px rgba(0,0,0,.35)}
+.editorial-card>img{filter:saturate(.82);transition:transform .75s var(--v10-ease)}
+.editorial-card:hover>img{transform:scale(1.035)}
+.editorial-card-content{padding:clamp(23px,3vw,37px)}
+.editorial-card-content h3{letter-spacing:-.026em}
+.product-card{border:1px solid var(--v10-edge);border-radius:16px;background:#141210;box-shadow:0 14px 40px rgba(0,0,0,.12);transition:transform .4s var(--v10-ease),border-color .35s,box-shadow .35s}
+.product-card:hover{transform:translateY(-5px);border-color:rgba(213,173,124,.48);box-shadow:0 25px 60px rgba(0,0,0,.34)}
+.product-photo img{filter:saturate(.86)}
+.product-card-body{padding:clamp(17px,1.8vw,26px)}
+.product-card h3{font-size:clamp(17px,1.4vw,22px);margin-bottom:10px;color:#F5EBDF}
+.product-card p{color:#B4A99D}
+.menu-empty{padding:clamp(24px,3.5vw,38px);overflow:hidden}
+.menu-empty img{border-radius:12px}
+.notice{border-left:2px solid var(--gold)}
+.location-banner{border-radius:18px;border-color:var(--v10-edge);box-shadow:0 22px 70px rgba(0,0,0,.25)}
+.location-info{background:linear-gradient(125deg,rgba(213,173,124,.038),transparent 70%),#13110f}
+.location-info .btn{margin-top:14px}
+.detail-action{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.detail-action .btn{min-width:0}
+/* Testimonial redesign: typographic identity, no circular profile avatars. */
+.testimonials-section{background:radial-gradient(ellipse at 52% -25%,rgba(213,173,124,.055),transparent 53%),#0c0b0a}
+.testimonials-head{max-width:1100px}
+.testimonial-marquee{padding:8px 0 22px}
+.testimonial-set{gap:18px;padding-inline:9px}
+.testimonial-track{animation-duration:48s}
+.testimonial-card{width:clamp(273px,27vw,385px);min-height:267px;padding:29px;border:1px solid rgba(213,173,124,.18);border-radius:19px;background:radial-gradient(ellipse at 12% 0%,rgba(213,173,124,.105),transparent 60%),linear-gradient(160deg,#1c1814,#11100f 75%);box-shadow:0 18px 50px rgba(0,0,0,.21);transition:border-color .3s,box-shadow .4s,transform .4s var(--v10-ease)}
+.testimonial-card:before{content:'';position:absolute;top:0;left:29px;right:29px;height:1px;background:linear-gradient(90deg,rgba(213,173,124,.67),transparent 88%)}
+.testimonial-card:hover{border-color:rgba(213,173,124,.43);background:radial-gradient(ellipse at 12% 0%,rgba(213,173,124,.13),transparent 60%),#171411;box-shadow:0 25px 55px rgba(0,0,0,.35);transform:translateY(-5px)}
+.testimonial-emblem{font-size:50px;opacity:.85}
+.testimonial-card-kicker{font-size:9px;color:#BDA788;max-width:190px;line-height:1.55;letter-spacing:.13em}
+.testimonial-card p{font-size:clamp(19px,1.7vw,24px);line-height:1.48;letter-spacing:-.025em;color:#F0E3D5;margin:26px 0 30px}
+.testimonial-card-bottom{gap:0;border-top:1px solid rgba(213,173,124,.19);padding-top:20px;display:block}
+.testimonial-card-bottom:before{content:'';display:block;background:var(--gold);width:25px;height:2px;margin-bottom:14px;border-radius:9px}
+.testimonial-card-bottom strong{font-size:12px;color:#F8F0E4;letter-spacing:.005em}
+.testimonial-card-bottom small{font-size:10px;color:#A99F95;margin-top:5px}
+.testimonial-controls,.carousel-toggle,.testimonial-avatar{display:none!important}
+/* User requested continuous movement; the user can still ask their device to reduce motion. */
+.testimonial-marquee:hover .testimonial-track,.testimonial-marquee:focus-within .testimonial-track{animation-play-state:running}
+@media(max-width:950px){.features{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.feature,.feature+.feature{padding:21px 16px}}
+@media(max-width:700px){
+ .features{grid-template-columns:1fr;gap:10px;padding-block:20px}
+ .feature,.feature+.feature{min-height:unset;display:flex;gap:15px;padding:20px 19px!important;border:1px solid var(--v10-edge)!important}
+ .feature:before{left:19px}.feature>.icon{margin-top:3px;flex:0 0 23px}
+ .category-grid{gap:12px}
+ .category-card{border-radius:14px}
+ .category-card .content{padding:17px 15px 19px}
+ .category-card h3{font-size:clamp(17px,4.7vw,22px);gap:9px}
+ .category-card h3 .icon{width:22px!important;height:22px!important;min-width:22px;flex-basis:22px}
+ .category-card p{font-size:11px}
+ .info-card,.long-text{padding:23px 21px}
+ .info-card h2{font-size:28px}
+ .info-card:not(.photo-only):before{left:21px;right:21px}
+ .editorial-card-content{padding:24px}
+ .testimonial-card{width:286px;min-height:263px;padding:25px;border-radius:16px}
+ .testimonial-card:before{left:25px;right:25px}
+ .testimonials-head{margin-bottom:25px}
+ .product-card-body{padding:15px 14px}
+ .detail-action{display:flex;flex-direction:column;align-items:stretch}
+ .detail-action .btn{width:100%;max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .testimonial-track{animation:none!important}
+ .feature,.category-card,.testimonial-card,.info-card,.product-card,.editorial-card{transition:none!important}
+}
+
+/* DeLima House · Edition 11 | balanced feature spacing + orbit border + refined mobile CTA */
+
+/* Balance vertical padding inside the feature cards shown on home. */
+.feature,.feature+.feature{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  align-items:center;
+  gap:18px;
+  padding:28px 24px !important;
+  min-height:146px;
+}
+.feature>div{display:grid;align-content:center}
+.feature h3{margin:0 0 10px;line-height:1.28}
+.feature p{margin:0;line-height:1.72}
+.feature>.icon{align-self:start;margin-top:2px}
+
+/* Keep the testimonial rail moving, but pause when a testimonial card is hovered/focused. */
+.testimonial-marquee:hover .testimonial-track,
+.testimonial-marquee:focus-within .testimonial-track{animation-play-state:running}
+.testimonial-track:has(.testimonial-card:hover),
+.testimonial-track:has(.testimonial-card:focus-within){animation-play-state:paused}
+
+/* Refined testimonial card interactions. */
+.testimonial-card p{margin:26px 0 28px}
+.testimonial-card-bottom{padding-top:18px}
+
+/* Sidebar contact CTA: match other button hover behavior, including the arrow. */
+.mobile-menu-cta .btn,
+.mobile-menu-cta .btn .cta-label,
+.mobile-menu-cta .btn .cta-arrow,
+.mobile-menu-cta .btn .cta-arrow .icon{
+  transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s var(--motion-ease),stroke .25s ease,box-shadow .25s ease;
+}
+.mobile-menu-cta .btn:hover,
+.mobile-menu-cta .btn:focus-visible{
+  background:var(--gold-bright);
+  border-color:var(--gold-bright);
+  color:#15110D;
+  box-shadow:0 9px 33px rgba(213,173,124,.13);
+}
+.mobile-menu-cta .btn:hover .cta-label,
+.mobile-menu-cta .btn:hover .cta-arrow,
+.mobile-menu-cta .btn:hover .cta-arrow .icon,
+.mobile-menu-cta .btn:focus-visible .cta-label,
+.mobile-menu-cta .btn:focus-visible .cta-arrow,
+.mobile-menu-cta .btn:focus-visible .cta-arrow .icon{
+  color:#15110D;
+  stroke:currentColor;
+}
+.mobile-menu-cta .btn:hover .cta-arrow,
+.mobile-menu-cta .btn:focus-visible .cta-arrow{transform:translateY(-50%) translateX(3px)}
+
+@media (max-width:700px){
+  .feature,.feature+.feature{
+    padding:22px 19px !important;
+    gap:15px;
+    min-height:unset;
+  }
+  .feature h3{margin-bottom:8px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .testimonial-track:has(.testimonial-card:hover),
+  .testimonial-track:has(.testimonial-card:focus-within){animation-play-state:running}
+}
+
+
+/* Edition 12 — no orbit borders; icon and heading share one centered row. */
+.feature,.feature+.feature{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:stretch;
+  gap:0;
+  padding:28px 24px !important;
+  min-height:148px;
+}
+.feature-head,
+.feature>div.feature-head{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  gap:16px;
+  min-width:0;
+}
+.feature-head>.icon{
+  flex:0 0 23px;
+  width:23px;
+  height:23px;
+  margin:0;
+  color:var(--gold);
+}
+.feature-head>h3{
+  font-size:13px;
+  font-weight:600;
+  line-height:1.45;
+  margin:0;
+}
+.feature>p{
+  margin:9px 0 0;
+  padding:0 0 0 39px;
+  max-width:none;
+  font-size:12px;
+  line-height:1.7;
+}
+@media(max-width:700px){
+  .feature,.feature+.feature{padding:22px 19px!important;min-height:unset}
+  .feature-head,.feature>div.feature-head{gap:15px}
+  .feature>p{padding-left:38px}
+}
+
+/* Preserve sticky navigation while locking the document behind the menu.
+   overflow:hidden on BODY makes the sticky header leave the viewport. */
+html.mobile-nav-locked{overflow:hidden;overscroll-behavior:none}
+body.lock{overflow:visible}
+.mobile-panel.open{overflow-y:auto;overscroll-behavior:contain}
